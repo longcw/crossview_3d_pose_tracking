@@ -79,6 +79,12 @@ class Pose3DLoader:
         self.data = [self.data[i] for i in sorted_indices]
         self.timestamps = np.asarray([item["timestamp"] for item in self.data])
 
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, i):
+        return self.data[i]
+
     def get_data(self, timestamp, delta_time_threshold=0.1):
         idx = np.searchsorted(self.timestamps, timestamp)
         if idx >= len(self.timestamps) or (
