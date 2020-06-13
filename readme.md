@@ -146,7 +146,7 @@ DATA_ROOT=/data/3DPose_pub/Campus_Seq1
 # 2D
 python display.py --frame-root ${DATA_ROOT}/frames --calibration ${DATA_ROOT}/calibration.json --pose-file ${DATA_ROOT}/annotation_2d.json --pose-type 2d
 
-# 3D
+# 3D (only tested on Linux)
 python display.py --frame-root ${DATA_ROOT}/frames --calibration ${DATA_ROOT}/calibration.json --pose-file ${DATA_ROOT}/annotation_3d.json --pose-type 3d
 ```
 

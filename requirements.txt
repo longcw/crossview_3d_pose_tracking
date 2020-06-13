@@ -1,0 +1,7 @@
+prettytable
+tqdm
+ujson
+opencv-python
+
+# PyQt5 or Glfw may required for 3D visualization
+vispy
