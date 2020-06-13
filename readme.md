@@ -18,7 +18,7 @@ Here we provide four datasets, including
 + StoreLayout2: proposed by AiFi Inc.
 
 
-For convenient, you can find and download them by one click from [Google Drive] (TBD).
+For convenient, you can find and download them by one click from [Google Drive](https://drive.google.com/drive/folders/1LJGcP2v0aQDmetnCzO2PiRP1v4jU6sFC?usp=sharing).
 
 ### Data Structure
 For each dataset, the structure of the directory is organized as follow
