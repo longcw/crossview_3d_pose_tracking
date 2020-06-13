@@ -2,7 +2,7 @@
 
 >**Note**: The repo contains the dataset used in the paper, 
 including Campus, Shelf, StoreLayout1, StoreLayout2.
-Along with the dataset
+Along with the data,
 we provide some scripts to visualize the data, in both 2D and 3D,
 and also to evaluate with the results.
 The source code is not included 
@@ -21,7 +21,7 @@ Here we provide four datasets, including
 For convenient, you can find and download them by one click from [Google Drive] (TBD).
 
 ### Data Structure
-For each dataset, the structure of the directory is form as follow
+For each dataset, the structure of the directory is organized as follow
 ```
 Campus_Seq1
 ├── annotation_2d.json
@@ -47,8 +47,8 @@ of each file is the tiemstamp in second of that frame.
 
 
 ### Data Format
-We have two different formats for 2D data (`annotation_2d` and `detection`) 
-and 3D data (`annotation_3d` and `result_3d`).
+2D (2D annotation and detection) and 3D (3D annotation and tracking result) 
+data have their own unified data format as follows.
 #### 2D Data Format
 The 2D data is organized by frames:
 ```json
