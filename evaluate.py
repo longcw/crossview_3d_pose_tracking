@@ -1,5 +1,3 @@
-import os
-import json
 import argparse
 import random
 import numpy as np
@@ -188,13 +186,13 @@ def evaluate(args):
         res = res_loader.get_data(anno["timestamp"], delta_time_threshold=0.1)
         if res is None:
             model_poses = []
-            model_ids = []
+            # model_ids = []
         else:
             model_poses = [
                 coco2shelf3D(np.asarray(pose["points_3d"], dtype=float))
                 for pose in res["poses"]
             ]
-            model_ids = [pose["id"] for pose in res["poses"]]
+            # model_ids = [pose["id"] for pose in res["poses"]]
 
         # Match targets and gts
         indices = _match_gts(model_poses, gt_poses)
