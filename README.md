@@ -161,6 +161,46 @@ python display.py --frame-root ${DATA_ROOT}/frames --calibration ${DATA_ROOT}/ca
 python display.py --frame-root ${DATA_ROOT}/frames --calibration ${DATA_ROOT}/calibration.json --pose-file ${DATA_ROOT}/result_3d.json --pose-type 3d
 ```
 
+### 3D visualization with Docker
+Sometimes it's hard to setup the environment for vispy. 
+Here we provide a dockerfile supports OpenGL and CUDA applications (from https://medium.com/@benjamin.botto/opengl-and-cuda-applications-in-docker-af0eece000f1).
+
+1. To use it you will need `nvidia-container-runtime`: https://github.com/NVIDIA/nvidia-container-runtime#installation
+
+2. Build the docker image 
+   ```bash
+   docker build -t glvnd-x-vispy:latest .
+   ```
+3. Start the container
+   ```bash
+   # Connecting to the Host’s X Server
+   xhost +local:root
+
+   docker run \
+   --rm \
+   -it \
+   --gpus all \
+   -v /tmp/.X11-unix:/tmp/.X11-unix \
+   -e DISPLAY=$DISPLAY \
+   -e QT_X11_NO_MITSHM=1 \
+   -v /PATH-TO-DATA/3DPose_pub:/data/3DPose_pub \
+   -v /PATH-TO-CODE/crossview_3d_pose_tracking:/app \
+   glvnd-x-vispy bash
+   ```
+4. Run the demo in a docker container
+   ```bash
+   cd /app
+   pip3 install -r requirements.txt
+
+   DATA_ROOT=/data/3DPose_pub/Campus_Seq1
+
+   # 2D detection
+   python3 display.py --frame-root ${DATA_ROOT}/frames --calibration ${DATA_ROOT}/calibration.json --pose-file ${DATA_ROOT}/detection.json --pose-type 2d
+
+   # 3D result
+   python3 display.py --frame-root ${DATA_ROOT}/frames --calibration ${DATA_ROOT}/calibration.json --pose-file ${DATA_ROOT}/result_3d.json --pose-type 3d
+   ```
+
 ### Evaluate
 
 ```bash
